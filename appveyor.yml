@@ -2,16 +2,16 @@ version: "{branch} {build}"
 
 #image: Previous Visual Studio 2015
 
-install:
- - ps: $zipPath = "$($env:USERPROFILE)\Handle.zip"
- - ps: (New-Object Net.WebClient).DownloadFile('https://download.sysinternals.com/files/Handle.zip', $zipPath)
- - ps: 7z x $zipPath -y -o"$env:APPVEYOR_BUILD_FOLDER" | Out-Null 
+#install:
+# - ps: $zipPath = "$($env:USERPROFILE)\Handle.zip"
+# - ps: (New-Object Net.WebClient).DownloadFile('https://download.sysinternals.com/files/Handle.zip', $zipPath)
+# - ps: 7z x $zipPath -y -o"$env:APPVEYOR_BUILD_FOLDER" | Out-Null 
  
 build:
   verbosity: detailed
 
 build_script:
-  - handle.exe -a -u C:\projects\embulk\embulk-cli\build\classes\test\org\embulk\cli\call-selfrun.bat -nobanner
+  #- handle.exe -a -u C:\projects\embulk\embulk-cli\build\classes\test\org\embulk\cli\call-selfrun.bat -nobanner
   - gradlew.bat --info --no-daemon check rubyTest
 
 cache:
@@ -27,5 +27,5 @@ test: off
 matrix:
   fast_finish: true
 
-on_finish:
-  - handle.exe -a -u C:\projects\embulk\embulk-cli\build\classes\test\org\embulk\cli\call-selfrun.bat -nobanner
+##on_finish:
+ # - handle.exe -a -u C:\projects\embulk\embulk-cli\build\classes\test\org\embulk\cli\call-selfrun.bat -nobanner
