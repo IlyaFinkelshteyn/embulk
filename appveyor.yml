@@ -5,7 +5,7 @@ version: "{branch} {build}"
 install:
  - ps: $zipPath = "$($env:USERPROFILE)\Handle.zip"
  - ps: (New-Object Net.WebClient).DownloadFile('https://download.sysinternals.com/files/Handle.zip', $zipPath)
- - 7z x $zipPath -y -o"$env:APPVEYOR_BUILD_FOLDER" | Out-Null 
+ - ps: 7z x $zipPath -y -o"$env:APPVEYOR_BUILD_FOLDER" | Out-Null 
  
 build:
   verbosity: detailed
