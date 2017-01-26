@@ -11,8 +11,7 @@ build:
   verbosity: detailed
 
 build_script:
-  - handle.exe -a -u C:\projects\embulk\embulk-cli\build\classes\test\org\embulk\cli\call-selfrun.bat -nobanner
-  - ps: sleep 20
+  - handle.exe -a -u C:\projects\embulk\embulk-cli\build\classes\test\org\embulk\cli\call-selfrun.bat -nobanner  
   - gradlew.bat --info --no-daemon check rubyTest
 
 cache:
